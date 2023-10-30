@@ -1,43 +1,19 @@
-# OttaFood
+# QuizApp
 
-Welcome to OttaFood, where flavor meets convenience! OttaFood is a passionate food company dedicated to providing high-quality, locally-sourced, and delicious food products to our customers. We believe in the power of food to bring people together and create memorable moments.
+Welcome to QuizApp, where knowledge meets fun! QuizApp is an interactive platform dedicated to providing engaging quizzes and challenges to test and expand your knowledge. We believe in the power of learning to inspire curiosity and create exciting learning experiences.
 
-## About OttaFood
+## About QuizApp
 
-At OttaFood, we take pride in our commitment to providing exceptional food and service. Our mission is to:
+At QuizApp, we take pride in our commitment to providing exceptional quizzes and challenges. Our mission is to:
 
-- Prioritize using fresh, locally-sourced ingredients to support our community and ensure the best flavors.
-- Offer culinary excellence by having experienced chefs create unique and delicious food products that cater to various tastes and preferences.
-- Value our customers' satisfaction and continuously strive to exceed their expectations.
-- Be committed to sustainable practices and reducing our environmental impact.
-
-## How to Run OttaFood Locally
-
-To run OttaFood locally and experience the deliciousness for yourself, follow these steps:
-
-1. **Clone the Repository:**
-   git clone https://github.com/your-username/ottafood.git
-2. **Navigate to the Project Directory:**
-   cd ottafood
-3. **Open the Website:**
-   You can use your preferred web browser to open the `index.html` file to explore the website.
-4. **Get Started:**
-   Feel free to navigate through the website, explore the menu, and learn more about OttaFood. You can also interact with the website's features, such as ordering food or leaving feedback.
-5. **Enjoy the Experience:**
-    Discover the culinary delights and the convenience of OttaFood right from your local environment.
+- Prioritize high-quality, well-researched questions to enhance your learning experience.
+- Offer a wide range of topics and subjects to cater to various interests and knowledge levels.
+- Value our users' satisfaction and continuously strive to improve and innovate our quizzes.
+- Be committed to providing an educational and enjoyable platform for learners of all ages.
 
 ## Feedback and Contributions
 
-We welcome feedback and contributions to help us improve OttaFood. If you have any suggestions, find issues, or want to collaborate, please feel free to:
+We welcome feedback and contributions to help us improve QuizApp. If you have any suggestions, find issues, or want to collaborate, please feel free to:
 
-- Open an issue on our GitHub repository.
-- Submit a pull request with your proposed changes or enhancements.
-
-We appreciate your support in making OttaFood even better!
-
-Thank you for visiting OttaFood and exploring our passion for food and community. We hope you enjoy the experience!
-
-For more information and to place an order, visit our website [here](https://www.).
-
-
-# QuizApp
+- Submit feedback directly within the app.
+- Share your ideas for new quizzes or improvements to existing ones.
