@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <style>
+        .option-button {
+            margin: 5px;
+            width: 15rem
+        }
+
+        .score-card {
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        /* .result-section {
+            text-align: left;
+        } */
+
+        /* .button-container {
+            margin-top: 20px;
+        } */
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top">
+        <div class="container-lg mx-auto">
+          <a class="navbar-brand" href="home.html">
+            <h1 class="fs-2 fw-bold text-white">QuizApp</h1>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-5 mb-2 mb-lg-0 ms-auto">
+              <li class="nav-item px-2"><a class="nav-link text-white" href="#">How it works?</a></li>
+              <li class="nav-item px-2"><a class="nav-link text-white" href="#">Features</a></li>
+              <li class="nav-item px-2"><a class="nav-link text-white" href="#">About us</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+<section class="py-5 my-5">
+    <div class="container mt-5 mx-auto py-5">
+        <!-- <h1 class="my-4">Quiz App</h1> -->
+
+        <div class="row">
+            <div class="col-md-6 px-4 py-5">
+                <div id="quiz">
+                    <p id="question" class="fw-bold fs-3"></p>
+                    <div class="p-3 rounded-top-2">
+                        <div id="options" class="row">
+                            <!-- Options will be displayed here dynamically from JavaScript -->
+                        </div>
+                        <p id="result" class="ps-4"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 px-4 py-4 border-dark border rounded-4">
+                <div id="score" class="text-center">
+                    <div class="score-card">
+                        <p class="fw-bold fs-4">Score: <span id="score-value">0</span></p>
+                        <p class="fw-bold fs-5">Total Questions: <span id="total-questions"></span></p>
+                        <p class="fw-bold fs-5">Passing Score: 80%</p>
+                    </div>
+                    <div class="result-section" style="display: none;">
+                        <p class="fw-bold fs-4" id="final-result"></p>
+                        <div id="retry-button" style="display: none;">
+                            <button class="btn btn-md btn-outline-dark mt-3 px-5 rounded-pill" onclick="retryQuiz()">Retry</button>
+                        </div>
+                        <div id="home-button" style="display: none;">
+                            <button class="btn btn-md btn-outline-dark mt-3 px-5 rounded-pill" onclick="returnHome()">Return Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Quiz questions and answers
+    const questions = [
+        {
+            question: "What is the capital of France?",
+            options: ["a. London", "b. Madrid", "c. Paris", "d. Rome"],
+            answer: "c. Paris"
+        },
+        {
+            question: "Which planet is known as the Red Planet?",
+            options: ["a. Earth", "b. Mars", "c. Venus", "d. Jupiter"],
+            answer: "b. Mars"
+        },
+        {
+            question: "What is the largest mammal in the world?",
+            options: ["a. Elephant", "b. Giraffe", "c. Whale Shark", "d. Blue Whale"],
+            answer: "d. Blue Whale"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let totalQuestions = questions.length;
+    let isQuizCompleted = false;
+
+    const questionElement = document.getElementById('question');
+    const optionsElement = document.getElementById('options');
+    const resultElement = document.getElementById('result');
+    const scoreElement = document.getElementById('score-value');
+    const totalQuestionsElement = document.getElementById('total-questions');
+    const resultSection = document.querySelector('.result-section');
+    const retryButton = document.getElementById('retry-button');
+    const homeButton = document.getElementById('home-button');
+    const finalResultElement = document.getElementById('final-result');
+
+    function displayQuestion() {
+        if (currentQuestionIndex < questions.length) {
+            const question = questions[currentQuestionIndex];
+            questionElement.textContent = question.question;
+            optionsElement.innerHTML = '';
+
+            question.options.forEach((option, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6';
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.className = 'btn btn-md btn-outline-dark mt-3 px-5 rounded-pill option-button';
+                button.addEventListener('click', () => selectAnswer(option));
+                col.appendChild(button);
+                optionsElement.appendChild(col);
+            });
+
+            if (isQuizCompleted) {
+                submitButton.style.display = 'none';
+            } else {
+                submitButton.style.display = 'block';
+            }
+        } else {
+            displayScore();
+        }
+    }
+
+    function selectAnswer(selectedOption) {
+    const currentQuestion = questions[currentQuestionIndex];
+    if (selectedOption === currentQuestion.answer) {
+        score++;
+        resultElement.textContent = 'Correct!';
+    } else {
+        resultElement.textContent = 'Wrong!';
+    }
+
+    // Disable the option buttons after selecting an answer
+    const optionButtons = document.querySelectorAll('.option-button');
+    optionButtons.forEach(button => {
+        button.disabled = true;
+        if (button.textContent === currentQuestion.answer) {
+            button.style.backgroundColor = 'green';
+        }
+    });
+
+        currentQuestionIndex++;
+        scoreElement.textContent = `${((score / totalQuestions) * 100).toFixed(2)}%`;
+        displayQuestion();
+    }
+
+    function displayScore() {
+        questionElement.textContent = 'Quiz completed!';
+        optionsElement.innerHTML = '';
+        resultElement.textContent = '';
+
+        const finalScore = (score / totalQuestions) * 100;
+        totalQuestionsElement.textContent = totalQuestions;
+
+        if (finalScore >= 80) {
+            var passed = {message:'Congratulations! /You passed the quiz.'}
+            var failed = {message:'You did not pass the quiz. /Please retry.'}
+            finalResultElement.textContent = passed;
+        
+            retryButton.style.display = 'none';
+            homeButton.style.display = 'block';
+        } else {
+            finalResultElement.textContent = failed;
+            retryButton.style.display = 'block';
+            homeButton.style.display = 'none';
+        }
+
+        isQuizCompleted = true;
+        resultSection.style.display = 'block';
+    }
+
+    function retryQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        isQuizCompleted = false;
+        resultSection.style.display = 'none';
+        displayQuestion();
+    }
+
+    function returnHome() {
+    // First, navigate to the new page
+    window.location.href = './home.html';
+    
+    // Then, you can show an alert or other messages if needed
+    alert('Returning to the home page');
+}
+
+
+    // Start the quiz
+    displayQuestion();
+</script>
+
+
+<!-- Bootstrap Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+<!-- <script src="assets/js/app.js"></script> -->
+
+</body>
+</html>

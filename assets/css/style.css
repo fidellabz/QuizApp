@@ -1,0 +1,29 @@
+/* *, body{
+  font-family: 'Poppins', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+.btn{
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn:hover{
+  background-color: #c7c2ec;
+  color: #000;
+}
+
+/*******Navigation**********/
+/* nav{
+  background-color: #c7c2ec;
+} */
+/* .nav-item a:hover{ */
+  /* color: #1907b6;
+ } */
+
+a{
+  text-decoration: none;
+}
