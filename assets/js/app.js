@@ -55,7 +55,6 @@ const questions = [
     }
 ];
 
-
 // Initialize variables for quiz functionality
 let currentQuestionIndex = 0;
 let score = 0;
@@ -160,7 +159,7 @@ function retryQuiz() {
 // Function to return to the home page
 function returnHome() {
     // First, navigate to the new page
-    window.location.href = './home.html';
+    window.location.href = './index.html';
     
     // Then, you can show an alert or other messages if needed
     alert('Returning to the home page');
