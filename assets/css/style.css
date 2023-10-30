@@ -1,29 +1,17 @@
-/* *, body{
-  font-family: 'Poppins', sans-serif;
-}
-
 a{
   text-decoration: none;
 }
 
-.btn{
-  border: 2px solid #fff;
-  color: #fff;
+.img-fluid{
+  max-width: 30%
 }
 
-.btn:hover{
-  background-color: #c7c2ec;
-  color: #000;
+.option-button {
+    margin: 5px;
+    width: 16rem
 }
 
-/*******Navigation**********/
-/* nav{
-  background-color: #c7c2ec;
-} */
-/* .nav-item a:hover{ */
-  /* color: #1907b6;
- } */
-
-a{
-  text-decoration: none;
+.score-card {
+    margin-top: 20px;
+    padding: 20px;
 }
