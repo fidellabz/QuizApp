@@ -16,14 +16,16 @@ a{
   color: #000;
 }
 
-/*******Navigation**********/
-/* nav{
-  background-color: #c7c2ec;
-} */
-/* .nav-item a:hover{ */
-  /* color: #1907b6;
- } */
-
 a{
   text-decoration: none;
+}
+
+.option-button {
+ margin: 5px;
+ width: 15rem
+}
+
+ .score-card {
+ margin-top: 20px;
+ padding: 20px;
 }
